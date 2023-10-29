@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>abyte.space/</title>
+   
+   <link></link>
+   <description>a little space for personal notes </description>
+   <language>en-us</language>
+   <managingEditor> </managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Install Ruby 3 and Jekyll on Apple Silicon</title>
+	  <link>//2023/10/install-ruby3-jekyll-macos-apple-silicon</link>
+	  <author></author>
+	  <pubDate>2023-10-29T10:18:00+00:00</pubDate>
+	  <guid>//2023/10/install-ruby3-jekyll-macos-apple-silicon</guid>
+	  <description><![CDATA[
+	     <p>If you would like to start your journey with <a href="https://jekyllrb.com/">Jekyll</a> but need the latest version of Ruby to run your gems, you will need to install Ruby in a slightly tricky way. 
+Unfortunately, MacOS, by default, has an old and unsupported version of Ruby (2.6.6). To update it, you will need to take a few steps (a simple installation of Ruby is not sufficient).</p>
+
+<h3 id="prerequirements">Prerequirements</h3>
+
+<p>Before we start we need to install few tools</p>
+
+<ol>
+  <li>Xcode - Apple IDE
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xcode-select <span class="nt">--install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Homebrew - package manager for MacOS
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://github.com/rbenv/rbenv"><code class="language-plaintext highlighter-rouge">rbenv</code></a> is a tool that helps managing multiple Ruby versions, it allows for quick switch between versions. <a href="https://github.com/rbenv/ruby-build">ruby-build</a> simplifies installation of any Ruby version.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rbenv ruby-build
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="initialize-rbenv">Initialize rbenv</h4>
+
+<p>First we need to initialize rbenv</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv init
+</code></pre></div></div>
+
+<p>And configure autorun in your shell</p>
+
+<p>a. If you are using <strong>zsh</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'eval "$(rbenv init - zsh)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+</code></pre></div></div>
+
+<p>b. For bash users</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'eval "$(rbenv init - bash)"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+</code></pre></div></div>
+
+<p>At this moment you can verify if everything works as expected by running <code class="language-plaintext highlighter-rouge">rbenv-doctor</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
+</code></pre></div></div>
+
+<h5 id="install-ruby">Install Ruby</h5>
+
+<p>You can check what versions of Ruby are available by running</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install</span> <span class="nt">-l</span>
+</code></pre></div></div>
+
+<p>Install selected version of Ruby (3.2.2 is lates one for me)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.2.2
+</code></pre></div></div>
+
+<p>When instalation is completed you can set version that will be used globally</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv global 3.2.2
+</code></pre></div></div>
+
+<p>To verify installation check <strong>Ruby</strong> version</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
+</code></pre></div></div>
+
+<h4 id="install-jekyll">Install Jekyll</h4>
+
+<p>Now when we have installed Ruby we can proceed with Jekyll installation.</p>
+
+<p>Best option to install Jekyll is to do user-install and install jekyll in user directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install</span> <span class="nt">--user-install</span> bundler jekyll
+</code></pre></div></div>
+
+<p>When installation finish you can try to use it on jekyll projects (try some from jekyll themes).</p>
+
+<p>To start jekyll run command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>At first You can get errors related to required gems not found, to fix that just install missing gems using command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>GEM_NAME
+</code></pre></div></div>
+
+<p>or use bundler</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle init
+</code></pre></div></div>
+
+<p>Done!</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

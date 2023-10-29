@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Document Settings -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Page Meta -->
+    <title>Install Ruby 3 and Jekyll on Apple Silicon</title>
+    <meta name="description" content="a little space for personal notes " />
+
+    <!-- Mobile Meta -->
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Brand icon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" >
+
+    <!-- Styles'n'Scripts -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+
+    <!-- highlight.js -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <style>.hljs { background: none; }</style>
+
+    <!-- Ghost outputs important style and meta data with this tag -->
+        <link rel="canonical" href="//2023/10/install-ruby3-jekyll-macos-apple-silicon" />
+    <meta name="referrer" content="origin" />
+    <link rel="next" href="/page2/" />
+
+    <meta property="og:site_name" content="a byte of space" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Install Ruby 3 and Jekyll on Apple Silicon" />
+    <meta property="og:description" content="a little space for personal notes " />
+    <meta property="og:url" content="//2023/10/install-ruby3-jekyll-macos-apple-silicon" />
+    <meta property="og:image" content="/assets/images/cover1.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Install Ruby 3 and Jekyll on Apple Silicon" />
+    <meta name="twitter:description" content="a little space for personal notes " />
+    <meta name="twitter:url" content="//2023/10/install-ruby3-jekyll-macos-apple-silicon" />
+    <meta name="twitter:image:src" content="/assets/images/cover1.jpg" />
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "a byte of space",
+    "name": "Install Ruby 3 and Jekyll on Apple Silicon",
+    "url": "//2023/10/install-ruby3-jekyll-macos-apple-silicon",
+    "image": "/assets/images/cover1.jpg",
+    "description": "a little space for personal notes "
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="a byte of space" href="/feed.xml" />
+
+
+</head>
+<body class="home-template nav-closed">
+
+    <!-- The blog navigation links -->
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-flink " role="presentation"><a href="/apache-flink">Apache Flink</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
+        <!-- default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+        
+            <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+        
+    </nav>
+</header>
+
+<main class="content" role="main">
+
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Install Ruby 3 and Jekyll on Apple Silicon</h1>
+            <section class="post-meta">
+            <!-- <a href='/'></a> -->
+
+            
+                
+                    <a href='/author/darek'>darek</a>
+                
+            
+            <time class="post-date" datetime="2023-10-29">29 Oct 2023</time>
+                <!-- [[tags prefix=" on "]] -->
+                
+                on
+                
+                    
+                       <a href='/tag/macos'>Macos</a>,
+                    
+                
+                    
+                       <a href='/tag/ruby'>Ruby</a>
+                    
+                
+                
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <p>If you would like to start your journey with <a href="https://jekyllrb.com/">Jekyll</a> but need the latest version of Ruby to run your gems, you will need to install Ruby in a slightly tricky way. 
+Unfortunately, MacOS, by default, has an old and unsupported version of Ruby (2.6.6). To update it, you will need to take a few steps (a simple installation of Ruby is not sufficient).</p>
+
+<h3 id="prerequirements">Prerequirements</h3>
+
+<p>Before we start we need to install few tools</p>
+
+<ol>
+  <li>Xcode - Apple IDE
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xcode-select <span class="nt">--install</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Homebrew - package manager for MacOS
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/bin/bash <span class="nt">-c</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="si">)</span><span class="s2">"</span>
+</code></pre></div>    </div>
+  </li>
+  <li><a href="https://github.com/rbenv/rbenv"><code class="language-plaintext highlighter-rouge">rbenv</code></a> is a tool that helps managing multiple Ruby versions, it allows for quick switch between versions. <a href="https://github.com/rbenv/ruby-build">ruby-build</a> simplifies installation of any Ruby version.
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rbenv ruby-build
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h4 id="initialize-rbenv">Initialize rbenv</h4>
+
+<p>First we need to initialize rbenv</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv init
+</code></pre></div></div>
+
+<p>And configure autorun in your shell</p>
+
+<p>a. If you are using <strong>zsh</strong></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'eval "$(rbenv init - zsh)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
+</code></pre></div></div>
+
+<p>b. For bash users</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'eval "$(rbenv init - bash)"'</span> <span class="o">&gt;&gt;</span> ~/.bash_profile
+</code></pre></div></div>
+
+<p>At this moment you can verify if everything works as expected by running <code class="language-plaintext highlighter-rouge">rbenv-doctor</code></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-fsSL</span> https://github.com/rbenv/rbenv-installer/raw/main/bin/rbenv-doctor | bash
+</code></pre></div></div>
+
+<h5 id="install-ruby">Install Ruby</h5>
+
+<p>You can check what versions of Ruby are available by running</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install</span> <span class="nt">-l</span>
+</code></pre></div></div>
+
+<p>Install selected version of Ruby (3.2.2 is lates one for me)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.2.2
+</code></pre></div></div>
+
+<p>When instalation is completed you can set version that will be used globally</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv global 3.2.2
+</code></pre></div></div>
+
+<p>To verify installation check <strong>Ruby</strong> version</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ruby <span class="nt">-v</span>
+</code></pre></div></div>
+
+<h4 id="install-jekyll">Install Jekyll</h4>
+
+<p>Now when we have installed Ruby we can proceed with Jekyll installation.</p>
+
+<p>Best option to install Jekyll is to do user-install and install jekyll in user directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install</span> <span class="nt">--user-install</span> bundler jekyll
+</code></pre></div></div>
+
+<p>When installation finish you can try to use it on jekyll projects (try some from jekyll themes).</p>
+
+<p>To start jekyll run command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>At first You can get errors related to required gems not found, to fix that just install missing gems using command</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem <span class="nb">install </span>GEM_NAME
+</code></pre></div></div>
+
+<p>or use bundler</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle init
+</code></pre></div></div>
+
+<p>Done!</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author
+            
+                
+                    
+
+                    <section class="author">
+                        <h4><a href="/author/darek">darek</a></h4>
+
+                        
+                            <p> Software Engineer with over a decade of experience.</p>
+                        
+                        <div class="author-meta">
+                            <span class="author-location icon-location"> Europe</span>
+                            <span class="author-link icon-link"><a href="http://abyte.space/"> abyte.space</a></span>
+                        </div>
+                    </section>
+
+                    /author 
+
+                    <section class="share">
+                        <h4>Share this post</h4>
+                        <a class="icon-twitter" href="http://twitter.com/share?text=Install Ruby 3 and Jekyll on Apple Silicon&amp;url=202310install-ruby3-jekyll-macos-apple-silicon"
+                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span class="hidden">Twitter</span>
+                        </a>
+                        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=202310install-ruby3-jekyll-macos-apple-silicon"
+                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                            <span class="hidden">Facebook</span>
+                        </a>
+                        <a class="icon-google-plus" href="https://plus.google.com/share?url=202310install-ruby3-jekyll-macos-apple-silicon"
+                           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                            <span class="hidden">Google+</span>
+                        </a>
+                    </section>
+               
+            -->
+
+            <!-- Add Disqus Comments -->
+            
+
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+        <!-- The tiny footer at the very bottom -->
+        <footer class="site-footer clearfix">
+          <section class="copyright"><a href="/">a byte of space</a> &copy; 2023</section>
+          <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://github.com/jekyllt/jasper">Jasper</a></section>
+        </footer>
+    </div>
+    <!-- highlight.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- jQuery needs to come before `` so that jQuery can be used in code injection -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <!-- Ghost outputs important scripts and data with this tag -->
+    <!--  -->
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'G-50J960VW50', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+    <!-- Fitvids makes video embeds responsive and awesome -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <!-- The main JavaScript file for Casper -->
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+
+</body>
+</html>
