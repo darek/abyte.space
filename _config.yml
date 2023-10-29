@@ -11,14 +11,15 @@ name: 'a byte of space'
 title: 'a byte of space'
 description: "a little space for personal notes "
 
-short_url: 'abyte.space/'
-google_analytics: G-50J960VW50
+short_url: 'abyte.space'
+url: 'https://abyte.space/'
+google_analytics: 'G-50J960VW50'
 #disqus: username
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /
+baseurl: "/"
 
 # Permalinks
-permalink: /:year/:month/:title
+permalink: :year/:month/:title
 # permalink: /author/:username
 # permalink: /tag/:tag
 
