@@ -3,7 +3,7 @@
 #highlighter: pygments
 markdown: kramdown
 highlighter: rouge
-paginate: 5
+paginate: 10
 language: 'en-us'
 
 # Website info
@@ -17,7 +17,7 @@ google_analytics: G-50J960VW50
 baseurl: /
 
 # Permalinks
-permalink: /:title
+permalink: /:year/:month/:title
 # permalink: /author/:username
 # permalink: /tag/:tag
 
@@ -48,10 +48,10 @@ lsi: false
 username: jekyllt
 repo: jasper
 branch: master
-relative_source: ../jasper/
-destination: ../jasper-pages/
-production_url:  https://jekyllt.github.io/jasper/
-source_url:  https://github.com/jekyllt/jasper/
+relative_source: ../
+destination: ../pages/
+production_url:  https://abyte.space/
+source_url:  https://abyte.space/
 
 exclude:
   - README.md

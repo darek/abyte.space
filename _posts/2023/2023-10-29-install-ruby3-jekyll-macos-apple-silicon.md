@@ -3,7 +3,7 @@ layout: post
 cover: false
 navigation: true
 title: Install Ruby 3 and Jekyll on Apple Silicon
-date: 2023-09-15 10:18:00
+date: 2023-10-29 10:18:00
 tags: macos ruby
 subclass: 'post'
 author: darek
