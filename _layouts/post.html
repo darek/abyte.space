@@ -13,7 +13,7 @@ class: 'post-template'
 
 <header class="main-header post-head {% if page.cover %}" style="background-image: url({{ site.baseurl }}{{ page.cover }}) {% else %}no-cover{% endif %}">
     <nav class="main-nav {% if page.cover %} overlay {% endif %} clearfix">
-        {% if page.logo %}<a class="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.baseurl }}{{ page.logo }}" alt="Blog Logo" /></a>{% endif %}
+        {% if page.logo %}<a class="blog-logo" href="{{ site.baseurl }}"><img src="{{ page.logo | relative_url }}" alt="Blog Logo" /></a>{% endif %}
         {% if page.navigation %}
             <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
         {% endif %}
@@ -31,11 +31,12 @@ class: 'post-template'
 
             {% for author in site.data.authors %}
                 {% if author[1].username == page.author %}
-                    <a href="{{ 'author/' | append: page.author | relative_url }}">{{ author[1].name }}</a>
+                    {{ author[1].name }} <!-- <a href="{{ 'author/' | append: page.author | relative_url }}">{{ author[1].name }}</a> -->
                 {% endif %}
             {% endfor %}
             <time class="post-date" datetime="{{ page.date | date:'%Y-%m-%d' }}">{{ page.date | date_to_string }}</time>
                 <!-- [[tags prefix=" on "]] -->
+                <!--
                 {% if page.tags.size > 0 %}
                 on
                 {% for tag in page.tags %}
@@ -45,7 +46,7 @@ class: 'post-template'
                        <a href="{{ 'tag/' | append: tag | relative_url }}">{{ tag | capitalize }}</a>,
                     {% endif %}
                 {% endfor %}
-                {% endif %}
+                {% endif %} -->
             </section>
         </header>
 
