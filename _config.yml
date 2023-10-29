@@ -46,8 +46,8 @@ plugins: [jekyll-paginate]
 # or "master" otherwise
 safe: false
 lsi: false
-username: jekyllt
-repo: jasper
+username: darek
+repo: abyte.space
 branch: master
 relative_source: ../
 destination: ../pages/
