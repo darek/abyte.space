@@ -7,7 +7,7 @@ date: 2023-10-29 10:18:00
 tags: macos ruby
 subclass: 'post'
 author: darek
-categories: macos ruby
+categories: darek
 ---
 
 If you would like to start your journey with [Jekyll](https://jekyllrb.com/) but need the latest version of Ruby to run your gems, you will need to install Ruby in a slightly tricky way. 
