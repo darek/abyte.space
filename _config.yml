@@ -8,6 +8,7 @@ language: 'en-us'
 
 # Website info
 name: 'a byte of space'
+title: 'a byte of space'
 description: "a little space for personal notes "
 
 short_url: 'abyte.space/'
